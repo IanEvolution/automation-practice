@@ -22,22 +22,19 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
         await driver.wait(until.elementIsVisible(emailInput), 5000);
         await driver.wait(async () => await emailInput.isEnabled(), 5000);
         await emailInput.click(); 
-
         // enter email and password
         const emailField = await driver.wait(until.elementLocated(By.id('username')), 5000);
         await driver.wait(until.elementIsVisible(emailField), 5000);
         await driver.wait(async () => await emailField.isEnabled(), 5000);
         await emailField.sendKeys('ianholt839@gmail.com');
-
         const passwordField = await driver.wait(until.elementLocated(By.id('password')), 5000);
         await driver.wait(until.elementIsVisible(passwordField), 5000);
         await driver.wait(async () => await passwordField.isEnabled(), 5000);
         await passwordField.sendKeys('RDL645Scout!');
-
         // click the login button
         await driver.findElement(By.css('button[type="submit"]')).click();
         */
-        
+
         // click the jobs icon
         const jobLink = await driver.wait(until.elementLocated(By.css('a[href="https://www.linkedin.com/jobs/?"]')), 10000);
         await driver.wait(until.elementIsVisible(jobLink), 10000);
@@ -62,7 +59,7 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
             console.log('---');
         }
         );
-    
+
     } catch (error) {
         console.error('An error occurred:', error);
     } finally {
