@@ -5,6 +5,9 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
     try {
         await driver.get('https://www.linkedin.com');
 
+        //wait for it to load
+        await driver.sleep(2000);
+
         //inject cookies to bypass F2A NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE
         await driver.manage().addCookie({
             name: 'li_at',
@@ -40,6 +43,10 @@ const {Builder, By, Key, until} = require('selenium-webdriver');
         await driver.wait(until.elementIsVisible(jobLink), 10000);
         await driver.wait(until.elementIsEnabled(jobLink), 10000);
         await jobLink.click();
+
+        //wait for the job page to load
+        //const jobPage = await driver.wait(until.elementLocated(By.xpath('h2[contains(@class="t-black") and text()="Top job picks for you"]')), 10000);
+        //await driver.wait(until.elementIsVisible(jobPage), 10000);
 
         //search for "sdet remote" jobs
         const jobSearch = await driver.wait(until.elementLocated(By.css('input[type="text"]')), 10000);
